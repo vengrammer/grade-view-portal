@@ -4,7 +4,7 @@ function Login() {
   return (
     <div>
       <h1>Login</h1>
-      <Button>Click Me</Button>
+      <Button variant="outline">Click Me</Button>
     </div>
   );
 }
