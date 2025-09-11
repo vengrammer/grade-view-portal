@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
 //pages
-import Layout from "../layout/Layout";
-import Home from "../pages/Home";
-
+import Layout from "@/layout/Layout";
+import Home from "@/pages/Home";
 
 function AdminRoutes() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="home" element={<Home />} />
+        <Route index element={<Home />} />
+        <Route />
       </Route>
     </Routes>
   );

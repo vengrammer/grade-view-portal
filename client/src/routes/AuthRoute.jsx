@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Login from "../pages/Login";
-import LandingPage from "../pages/LandingPage";
+import Login from "@/pages/Login";
+import LandingPage from "@/pages/LandingPage";
 
 function AuthRoute() {
   return (
