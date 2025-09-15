@@ -28,11 +28,11 @@ export function LoginForm({ className, ...props }) {
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username">User Id</Label>
                 <Input
                   id="username"
                   type="text"
-                  placeholder="reven pogi"
+                  placeholder="A202109921"
                   required
                 />
               </div>

@@ -1,5 +1,4 @@
 import { LoginForm } from "@/components/login-form"
-import { Outlet } from "react-router-dom"
 
 export default function LandingPage() {
   return (

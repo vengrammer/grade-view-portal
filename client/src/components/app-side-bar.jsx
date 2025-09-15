@@ -1,4 +1,3 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 import { AdminSidebarItems } from "@/lib/AdminSidebarItems";
 import { StudentSidebarItems } from "@/lib/StudentSidebarItems";
 import { useLocation } from "react-router-dom";

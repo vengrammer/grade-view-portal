@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminRoutes from "./routes/AdminRoutes";
-import NotFoundPage from "./pages/NotFoundPage";
+import NotFoundPage from "./pages/error/NotFoundPage";
 import AuthRoute from "./routes/AuthRoute";
+
 function App() {
   return (
     <BrowserRouter>

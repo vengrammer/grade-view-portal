@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 //pages
 import Layout from "@/layout/Layout";
-import Home from "@/pages/Home";
+import Home from "@/pages/admin/Home";
 
 function AdminRoutes() {
   return (
