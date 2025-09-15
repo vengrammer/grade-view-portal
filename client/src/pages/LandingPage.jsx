@@ -1,12 +1,12 @@
-import { Outlet } from "react-router-dom";
-function LandingPage() {
+import { LoginForm } from "@/components/login-form"
+import { Outlet } from "react-router-dom"
+
+export default function LandingPage() {
   return (
-    <div className="min-h-screen min-w-screen bg-gray-900">
-      <h1>Landing page</h1>
-      <main>
-        <Outlet />
-      </main>
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-slate-900">
+      <div className="w-full max-w-sm">
+        <LoginForm />
+      </div>
     </div>
-  );
+  )
 }
-export default LandingPage;
