@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-
+import { ThemeSwitch } from "./ThemeSwitch";
 export function AppSidebar() {
   const location = useLocation();
   const items = location.pathname.includes("admin")
@@ -25,6 +25,7 @@ export function AppSidebar() {
             {location.pathname.includes("admin")
               ? "Admin Dashboard"
               : "Student Dashboard"}
+             <span className="pl-9"><ThemeSwitch/></span> 
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
