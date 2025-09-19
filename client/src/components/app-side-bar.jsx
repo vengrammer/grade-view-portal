@@ -1,5 +1,7 @@
 import { AdminSidebarItems } from "@/lib/AdminSidebarItems";
 import { StudentSidebarItems } from "@/lib/StudentSidebarItems";
+import { UserPlus } from "lucide-react";
+import { Button } from "./ui/button";
 import { useLocation } from "react-router-dom";
 import {
   Sidebar,
@@ -25,10 +27,13 @@ export function AppSidebar() {
             {location.pathname.includes("admin")
               ? "Admin Dashboard"
               : "Student Dashboard"}
-             <span className="pl-9"><ThemeSwitch/></span> 
+            <span className="pl-9">
+              <ThemeSwitch />
+            </span>
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
+              <Button variant="default" className="m-2 mt-5"><span><UserPlus/></span>Add User</Button>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>

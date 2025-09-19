@@ -1,30 +1,25 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { NotebookText , LayoutDashboard , Users , CircleUserRound , GraduationCap } from "lucide-react"
 
 export const AdminSidebarItems = [
   {
-    title: "Home",
-    url: "#",
-    icon: Home,
+    title: "Dashboard",
+    url: "admin",
+    icon: LayoutDashboard ,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Subjects",
+    url: "admin/calendar",
+    icon: NotebookText,
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    title: "Section",
+    url: "admin/search",
+    icon: GraduationCap,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Account",
+    url: "admin/settings",
+    icon: CircleUserRound ,
   },
 ]
 
