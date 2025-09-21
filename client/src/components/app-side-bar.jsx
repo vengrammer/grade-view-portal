@@ -1,7 +1,6 @@
 import { AdminSidebarItems } from "@/lib/AdminSidebarItems";
 import { StudentSidebarItems } from "@/lib/StudentSidebarItems";
-import { UserPlus } from "lucide-react";
-import { Button } from "./ui/button";
+import { AddForm } from "@/components/CreateAccount";
 import { useLocation } from "react-router-dom";
 import {
   Sidebar,
@@ -33,7 +32,7 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <Button variant="default" className="m-2 mt-5"><span><UserPlus/></span>Add User</Button>
+             <AddForm />
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
