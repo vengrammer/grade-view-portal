@@ -1,5 +1,5 @@
 import CardForDashBoard from "@/components/CardForDashBoard";
-
+import { Component } from "@/components/table";
 function Dashboard() {
   return (
     <div className="w-full">
@@ -8,6 +8,9 @@ function Dashboard() {
         <CardForDashBoard title="Students" data={12} />
         <CardForDashBoard title="Subjects" data={12} />
         <CardForDashBoard title="Sections" data={12} />
+      </div>
+      <div className="max-w-screen md:p-20 px-5">
+        <Component/>
       </div>
     </div>
   );

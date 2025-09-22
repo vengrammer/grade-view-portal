@@ -1,8 +1,8 @@
 "use client";
 
 import { useId } from "react";
-import { CreditCardIcon, UserRoundPlus, UserPlus } from "lucide-react";
-
+import { UserRoundPlus, UserPlus } from "lucide-react";
+import { subjects } from "@/lib/Subject";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -52,16 +52,25 @@ export function AddForm() {
 
         <form className="space-y-5">
           <div className=" space-y-4">
-            <div className="*:not-first:mt-2">
-              <Label htmlFor={`name-${id}`}>Type of user</Label>
-              <Dropdown setRole={getTheRole} />
+            <div className="flex min-w-full">
+              <div className="*:not-first:mt-2 col-start w-full pr-2">
+                <Label htmlFor={`name-${id}`}>Role of user</Label>
+                <Dropdown setRole={getTheRole} />
+              </div>
+              <div
+                className={
+                  role == "admin"
+                    ? "hidden"
+                    : "*:not-first:mt-2 col-start w-full pl-2"
+                }
+              >
+                <Label htmlFor={`name-${id}`}>
+                  {role.charAt(0).toUpperCase() + role.slice(1)} ID
+                </Label>
+                <Input id={`name-${id}`} type="text" required />
+              </div>
             </div>
-            <div className={role == "admin" ? "hidden" : "*:not-first:mt-2"}>
-              <Label htmlFor={`name-${id}`}>
-                {role.charAt(0).toUpperCase() + role.slice(1)} ID
-              </Label>
-              <Input id={`name-${id}`} type="text" required />
-            </div>
+
             <div className="flex min-w-full">
               <div className="*:not-first:mt-2 col-start w-full pr-2">
                 <Label htmlFor={`name-${id}`}>First Name</Label>
@@ -85,7 +94,22 @@ export function AddForm() {
                 <Input id={`name-${id}`} type="date" required />
               </div>
             </div>
-            
+          </div>
+          <div>
+            <Label htmlFor={`name-${id}`}>Choose the subject</Label>
+            {subjects.map((subject) => (
+              <div className="flex items-center  gap-2">
+                <div className="flex">
+                  <Checkbox id={`primary-${id}`} />
+                  <Label
+                    htmlFor={`primary-${id}`}
+                    className="text-muted-foreground font-normal"
+                  >
+                    {subject}
+                  </Label>
+                </div>
+              </div>
+            ))}
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id={`primary-${id}`} />
