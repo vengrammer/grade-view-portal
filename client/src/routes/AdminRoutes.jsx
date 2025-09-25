@@ -2,16 +2,24 @@ import { Route, Routes } from "react-router-dom";
 
 //pages
 import Layout from "@/layout/Layout";
-import Home from "@/pages/admin/Dashboard";
+import Dashboard from "@/pages/admin/Dashboard";
+import Account from "@/pages/admin/Account";
+import Sections from "@/pages/admin/Sections";
+import Students from "@/pages/admin/Students";
+import Subjects from "@/pages/admin/Subjects";
 import NotFoundPage from "@/pages/error/NotFoundPage";
 
 function AdminRoutes() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<Dashboard />} />
+        <Route path="/students" element={<Students />} />
+        <Route path="/subjects" element={<Subjects />} />
+        <Route path="/sections" element={<Sections />} />
+        <Route path="/account" element={<Account />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />}/>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

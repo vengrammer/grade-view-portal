@@ -1,7 +1,7 @@
 import { AdminSidebarItems } from "@/lib/AdminSidebarItems";
 import { StudentSidebarItems } from "@/lib/StudentSidebarItems";
 import { AddForm } from "@/components/CreateAccount";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -32,14 +32,14 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-             <AddForm />
+              <AddForm />
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

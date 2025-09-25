@@ -9,28 +9,27 @@ import {
 export const AdminSidebarItems = [
   {
     title: "Dashboard",
-    url: "admin",
+    url: "/admin",
     icon: LayoutDashboard,
   },
   {
     title: "Students",
-    url: "admin/calendar",
-    icon: Users ,
+    url: "/admin/students",
+    icon: Users,
   },
-
   {
     title: "Subjects",
-    url: "admin/calendar",
+    url: "/admin/subjects",
     icon: NotebookText,
   },
   {
     title: "Section",
-    url: "admin/search",
+    url: "/admin/sections",
     icon: GraduationCap,
   },
   {
     title: "Account",
-    url: "admin/settings",
+    url: "/admin/account",
     icon: CircleUserRound,
   },
 ];

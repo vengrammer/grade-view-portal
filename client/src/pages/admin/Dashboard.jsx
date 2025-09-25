@@ -9,8 +9,10 @@ function Dashboard() {
         <CardForDashBoard title="Subjects" data={12} />
         <CardForDashBoard title="Sections" data={12} />
       </div>
-      <div className="max-w-screen md:p-20 px-5">
-        <Component/>
+      <div className="max-w-screen">
+        <div className="py-10 px-10">
+          <Component/>
+        </div>
       </div>
     </div>
   );
