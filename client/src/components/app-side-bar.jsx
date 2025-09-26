@@ -13,6 +13,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { ThemeSwitch } from "./ThemeSwitch";
+import { DropDownButton } from "./dropdown-button";
 export function AppSidebar() {
   const location = useLocation();
   const items = location.pathname.includes("admin")
@@ -36,10 +37,14 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link to={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
+                    {item.title === "Batch" ? (
+                      <DropDownButton />
+                    ) : (
+                      <Link to={item.url}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    )}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

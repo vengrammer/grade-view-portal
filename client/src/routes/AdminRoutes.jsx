@@ -8,6 +8,7 @@ import Sections from "@/pages/admin/Sections";
 import Students from "@/pages/admin/Students";
 import Subjects from "@/pages/admin/Subjects";
 import NotFoundPage from "@/pages/error/NotFoundPage";
+import Batch from "@/pages/admin/Batch";
 
 function AdminRoutes() {
   return (
@@ -15,6 +16,7 @@ function AdminRoutes() {
       <Route element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="/students" element={<Students />} />
+        <Route path="/batch" element={<Batch />} />
         <Route path="/subjects" element={<Subjects />} />
         <Route path="/sections" element={<Sections />} />
         <Route path="/account" element={<Account />} />

@@ -1,16 +1,23 @@
 import {
   NotebookText,
   LayoutDashboard,
+  CalendarSearch,
   Users,
   CircleUserRound,
   GraduationCap,
 } from "lucide-react";
 
 export const AdminSidebarItems = [
+  
   {
     title: "Dashboard",
     url: "/admin",
     icon: LayoutDashboard,
+  },
+  {
+    title: "Batch",
+    url: "/admin/batch",
+    icon: CalendarSearch,
   },
   {
     title: "Students",

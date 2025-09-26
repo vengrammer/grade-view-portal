@@ -1,5 +1,7 @@
 import CardForDashBoard from "@/components/CardForDashBoard";
-import { Component } from "@/components/table";
+import { DataTable } from "@/components/table";
+import { getTheTeacher } from "@/services/admin/getTheTeacher";
+import { teachersTableColumn } from "@/lib/teachersTableColumn";
 function Dashboard() {
   return (
     <div className="w-full">
@@ -11,7 +13,10 @@ function Dashboard() {
       </div>
       <div className="max-w-screen">
         <div className="py-10 px-10">
-          <Component/>
+          <div className="pb-5">
+            <span className="text-lg font-medium">Teachers</span>
+          </div>
+          <DataTable tableData={getTheTeacher} columns={teachersTableColumn} />
         </div>
       </div>
     </div>

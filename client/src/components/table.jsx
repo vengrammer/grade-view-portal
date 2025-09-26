@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -11,26 +11,26 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronUpIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { usePagination } from "@/hooks/use-pagination"
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { usePagination } from "@/hooks/use-pagination";
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-} from "@/components/ui/pagination"
+} from "@/components/ui/pagination";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -38,9 +38,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
-const columns = [
+/**const columns = [
   {
     id: "select",
     header: ({ table }) => (
@@ -110,34 +110,27 @@ const columns = [
     },
     size: 120,
   },
-]
+]**/
 
-export function Component() {
-  const pageSize = 5
+export function DataTable({ tableData, columns }) {
+  const pageSize = 5;
 
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: pageSize,
-  })
+  });
 
   const [sorting, setSorting] = useState([
     {
       id: "name",
       desc: false,
     },
-  ])
-
-  const [data, setData] = useState([])
+  ]);
+  //get The data
+  const [data, setData] = useState(tableData);
   useEffect(() => {
-    async function fetchPosts() {
-      const res = await fetch(
-        "https://raw.githubusercontent.com/origin-space/origin-images/refs/heads/main/users-01_fertyx.json"
-      )
-      const data = await res.json()
-      setData(data)
-    }
-    fetchPosts()
-  }, [])
+    setData(tableData);
+  }, [tableData]);
 
   const table = useReactTable({
     data,
@@ -152,13 +145,13 @@ export function Component() {
       sorting,
       pagination,
     },
-  })
+  });
 
   const { pages, showLeftEllipsis, showRightEllipsis } = usePagination({
     currentPage: table.getState().pagination.pageIndex + 1,
     totalPages: table.getPageCount(),
     paginationItemsToDisplay: 5,
-  })
+  });
 
   return (
     <div className="space-y-4">
@@ -172,11 +165,14 @@ export function Component() {
                     <TableHead
                       key={header.id}
                       style={{ width: `${header.getSize()}px` }}
-                      className="h-11">
+                      className="h-11"
+                    >
                       {header.isPlaceholder ? null : header.column.getCanSort() ? (
                         <div
-                          className={cn(header.column.getCanSort() &&
-                            "flex h-full cursor-pointer items-center justify-between gap-2 select-none")}
+                          className={cn(
+                            header.column.getCanSort() &&
+                              "flex h-full cursor-pointer items-center justify-between gap-2 select-none"
+                          )}
                           onClick={header.column.getToggleSortingHandler()}
                           onKeyDown={(e) => {
                             // Enhanced keyboard handling for sorting
@@ -184,23 +180,38 @@ export function Component() {
                               header.column.getCanSort() &&
                               (e.key === "Enter" || e.key === " ")
                             ) {
-                              e.preventDefault()
-                              header.column.getToggleSortingHandler()?.(e)
+                              e.preventDefault();
+                              header.column.getToggleSortingHandler()?.(e);
                             }
                           }}
-                          tabIndex={header.column.getCanSort() ? 0 : undefined}>
-                          {flexRender(header.column.columnDef.header, header.getContext())}
+                          tabIndex={header.column.getCanSort() ? 0 : undefined}
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                           {{
                             asc: (
-                              <ChevronUpIcon className="shrink-0 opacity-60" size={16} aria-hidden="true" />
+                              <ChevronUpIcon
+                                className="shrink-0 opacity-60"
+                                size={16}
+                                aria-hidden="true"
+                              />
                             ),
                             desc: (
-                              <ChevronDownIcon className="shrink-0 opacity-60" size={16} aria-hidden="true" />
+                              <ChevronDownIcon
+                                className="shrink-0 opacity-60"
+                                size={16}
+                                aria-hidden="true"
+                              />
                             ),
                           }[header.column.getIsSorted()] ?? null}
                         </div>
                       ) : (
-                        flexRender(header.column.columnDef.header, header.getContext())
+                        flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )
                       )}
                     </TableHead>
                   );
@@ -211,17 +222,26 @@ export function Component() {
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
                   No results.
                 </TableCell>
               </TableRow>
@@ -234,7 +254,8 @@ export function Component() {
         {/* Page number information */}
         <p
           className="text-muted-foreground flex-1 text-sm whitespace-nowrap"
-          aria-live="polite">
+          aria-live="polite"
+        >
           Page{" "}
           <span className="text-foreground">
             {table.getState().pagination.pageIndex + 1}
@@ -254,7 +275,8 @@ export function Component() {
                   className="disabled:pointer-events-none disabled:opacity-50"
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
-                  aria-label="Go to previous page">
+                  aria-label="Go to previous page"
+                >
                   <ChevronLeftIcon size={16} aria-hidden="true" />
                 </Button>
               </PaginationItem>
@@ -269,14 +291,15 @@ export function Component() {
               {/* Page number buttons */}
               {pages.map((page) => {
                 const isActive =
-                  page === table.getState().pagination.pageIndex + 1
+                  page === table.getState().pagination.pageIndex + 1;
                 return (
                   <PaginationItem key={page}>
                     <Button
                       size="icon"
                       variant={`${isActive ? "outline" : "ghost"}`}
                       onClick={() => table.setPageIndex(page - 1)}
-                      aria-current={isActive ? "page" : undefined}>
+                      aria-current={isActive ? "page" : undefined}
+                    >
                       {page}
                     </Button>
                   </PaginationItem>
@@ -298,7 +321,8 @@ export function Component() {
                   className="disabled:pointer-events-none disabled:opacity-50"
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
-                  aria-label="Go to next page">
+                  aria-label="Go to next page"
+                >
                   <ChevronRightIcon size={16} aria-hidden="true" />
                 </Button>
               </PaginationItem>
@@ -311,10 +335,14 @@ export function Component() {
           <Select
             value={table.getState().pagination.pageSize.toString()}
             onValueChange={(value) => {
-              table.setPageSize(Number(value))
+              table.setPageSize(Number(value));
             }}
-            aria-label="Results per page">
-            <SelectTrigger id="results-per-page" className="w-fit whitespace-nowrap">
+            aria-label="Results per page"
+          >
+            <SelectTrigger
+              id="results-per-page"
+              className="w-fit whitespace-nowrap"
+            >
               <SelectValue placeholder="Select number of results" />
             </SelectTrigger>
             <SelectContent>
@@ -327,16 +355,6 @@ export function Component() {
           </Select>
         </div>
       </div>
-      <p className="text-muted-foreground mt-4 text-center text-sm">
-        Numeric pagination made with{" "}
-        <a
-          className="hover:text-foreground underline"
-          href="https://tanstack.com/table"
-          target="_blank"
-          rel="noopener noreferrer">
-          TanStack Table
-        </a>
-      </p>
     </div>
   );
 }
